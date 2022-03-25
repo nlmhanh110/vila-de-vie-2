@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AnniversaryComponent } from './anniversary/anniversary.component';
+import { MeetingComponent } from './meeting/meeting.component';
+import { WeddingComponent } from './wedding/wedding.component';
+import { MeetingCelebrationComponent } from './meeting-celebration/meeting-celebration.component';
+import { MeetnceleRequestComponent } from './meetncele-request/meetncele-request.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,10 +20,16 @@ import { AnniversaryComponent } from './anniversary/anniversary.component';
     HeaderComponent,
     FooterComponent,
     AnniversaryComponent,
+    MeetingComponent,
+    WeddingComponent,
+    MeetingCelebrationComponent,
+    MeetnceleRequestComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

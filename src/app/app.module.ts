@@ -12,6 +12,11 @@ import { WeddingComponent } from './wedding/wedding.component';
 import { MeetingCelebrationComponent } from './meeting-celebration/meeting-celebration.component';
 import { MeetnceleRequestComponent } from './meetncele-request/meetncele-request.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
+import { HttpClientModule } from'@angular/common/http';
+import { OfferRoomComponent } from './offer-room/offer-room.component';
+import { ReservationComponent } from './reservation/reservation.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WeddingComponent,
     MeetingCelebrationComponent,
     MeetnceleRequestComponent,
+    RoomDetailComponent,
+    OfferRoomComponent,
+    ReservationComponent,
   ],
   imports: [
     BrowserModule,

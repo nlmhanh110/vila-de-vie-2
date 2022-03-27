@@ -1,0 +1,28 @@
+.main__feedback {
+    background-color: gray;
+    width: 80%;
+    margin: auto;
+    padding: 1%;
+
+}
+
+.item__feedback {
+    background-color: var(--myColor3);
+    padding: 5%;
+    margin: 2%;
+
+}
+
+.loadMore {
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .pagination {
+        display: none;
+    }
+
+    .loadMore {
+        display: block;
+    }
+}

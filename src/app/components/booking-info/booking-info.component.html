@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem thông tin đặt phòng</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__title--2">
+            <!-- chứa title và background -->
+            <img src="assets/Media/whiteheaderbg.webp" alt="Error">
+            <div class="title__container title__container--type2">
+                <p class="title__item--2">Vila de Vie</p>
+                <p class="title__item--4">Xem thông tin đặt phòng</p>
+            </div>
+        </div>
+        <div class="main__content">
+            <div class="main__content--container">
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN ĐẶT PHÒNG
+                    </div>
+                    <div class="infor--right">
+                        <div class="detail">
+                            <label class="form__label" for="code">Mã đặt phòng</label>
+                            <output class="form__output" type="text" name="code" id="code">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="bookstatus">Tình trạng</label>
+                            <output class="form__output" type="text" name="bookstatus" id="bookstatus">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="time">Thời gian đặt phòng</label>
+                            <output class="form__output" type="text" name="time" id="time">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="checkin">Ngày đến</label>
+                            <output class="form__output" type="date" name="checkin" id="checkin">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="checkout">Ngày đi</label>
+                            <output class="form__output" type="date" name="checkout" id="checkout">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="quantity">Số phòng</label>
+                            <output class="form__output" type="text" name="quantity" id="quantityRoom">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="quantity">Số người tối đa</label>
+                            <output class="form__output" type="text" name="quantity" id="quantityPeople">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="total">Tổng cộng</label>
+                            <output class="form__output" type="text" name="total" id="total">
+                        </div>
+                    </div>
+                </div>
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN NGƯỜI ĐẶT
+                    </div>
+                    <div class="infor--right">
+                        <div class="detail">
+                            <label class="form__label" for="Fullname">Họ và tên</label>
+                            <output class="form__output" type="text" name="Fullname" id="Fullname">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="phonenumber">Số điện thoại</label>
+                            <output class="form__output" type="text" name="phonenumber" id="phonenumber">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="email">Email</label>
+                            <output class="form__output" type="text" name="email" id="email">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="address">Địa chỉ</label>
+                            <output class="form__output" type="text" name="address" id="address">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="paymentmethod">Phương thức thanh toán</label>
+                            <output class="form__output" type="text" name="paymentmethod" id="paymentmethod">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN PHÒNG CỤ THỂ
+                    </div>
+                    <div class="infor--right rooms__container">
+                        <!-- <div class="detail">
+                            <label class="form__label" for="room01">Phòng 01</label>
+                            <output class="form__output" type="text" name="room01" id="room01"></output>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="price1">Giá phòng</label>
+                            <output class="form__output" type="text" name="price1" id="price1"></output>
+                        </div> -->
+                        <!-- <div class="detail">
+                            <label class="form__label" for="room02">Phòng 02</label>
+                            <output class="form__output" type="text" name="room01" id="room01">
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="price2">Giá phòng</label>
+                            <output class="form__output" type="text" name="price2" id="price2">
+                        </div> -->
+
+                        <!-- Phần discount -->
+                        <!-- <div class="detail">
+                            <label class="form__label" for="voucher">Mã khuyến mãi</label>
+                            <output class="form__output" type="text" name="voucher" id="voucher">
+                        </div> -->
+                        <div class="detail">
+                            <label class="form__label" for="voucher">Mã khuyến mãi</label>
+                            <output class="form__output" type="text" name="voucher" id="voucher">
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <input class="button--type1" type="button" id="feedback" data-target="#formFeedBack"
+                        data-toggle="modal" value="GỬI PHẢN HỒI">
+                    <input class="button--type1" id="print" type="button" onclick="window.print();"
+                        value="IN THÔNG TIN">
+                    <input class="button--type1" onclick="bookingCancel()" type="button" data-target="#popupCancel"
+                        data-toggle="modal" value="HỦY ĐẶT PHÒNG">
+                </div>
+
+                <!-- Group : modal cho Feedback -->
+                <div class="form-popup modal fade" role="dialog" id="formFeedBack">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                                <h3 style="text-align: center;">Gửi phản hồi</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="form-container">
+                                    <label for="fb">Hãy cho chúng tôi biết cảm nhận của bạn tại Vila de Vie</label>
+                                    <textarea class="form__input" name="fb" id="fb" cols="30" rows="7"
+                                        required></textarea>
+                                    <button type="submit" class="button--type2">GỬI</button>
+                                </form>
+                                <div class="result--Fb" id="result"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group : modal cho Cancel -->
+                <div class="modal fade" role="dialog" id="popupCancel">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                                <h3 style="text-align: center;">Xác nhận hủy đặt phòng</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p style="text-align: center;" id="checkCancel"></p>
+                                <div class="button--container">
+                                    <button class="button--type1" type="button" onclick="cancelYes()">Có</button>
+                                    <button type="button" class="button--type2" onclick="cancelNo()">Không</button>
+                                </div>
+                                <div class="result--cancel" id="result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -21,6 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoomDetailComponent } from './components/room-detail/room-detail.component';
 import { OfferRoomComponent } from './components/offer-room/offer-room.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { MeetingComponent } from './meeting/meeting.component';
+import { WeddingComponent } from './wedding/wedding.component';
+import { MeetingCelebrationComponent } from './meeting-celebration/meeting-celebration.component';
+import { MeetnceleRequestComponent } from './meetncele-request/meetncele-request.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     FindBookingInfoComponent,
     RoomDetailComponent,
     OfferRoomComponent,
-    ReservationComponent
+    ReservationComponent,
+    MeetingComponent,
+    WeddingComponent,
+    MeetingCelebrationComponent,
+    MeetnceleRequestComponent,
   ],
   imports: [
     BrowserModule,

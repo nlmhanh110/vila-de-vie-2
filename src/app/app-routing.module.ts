@@ -7,6 +7,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { HomeComponent } from './components/home/home.component';
 import { MeetingCelebrationComponent } from './components/meeting-celebration/meeting-celebration.component';
 import { MeetingComponent } from './components/meeting/meeting.component';
+import { WeddingComponent } from './wedding/wedding.component';
 import { MeetnceleRequestComponent } from './components/meetncele-request/meetncele-request.component';
 import { OfferRoomComponent } from './components/offer-room/offer-room.component';
 import { PhongbinhthuongComponent } from './components/phongbinhthuong/phongbinhthuong.component';
@@ -33,7 +34,11 @@ const routes: Routes = [
   {path: 'rooms/:id',component:RoomDetailComponent},
   {path: 'offerRoom',component:OfferRoomComponent},
   {path: 'reservation',component:ReservationComponent},
-  {path: 'phongbinhthuong',component:PhongbinhthuongComponent}
+  {path: 'phongbinhthuong',component:PhongbinhthuongComponent},
+  {path: 'meeting', component:MeetingComponent},
+  {path: 'wedding', component:WeddingComponent},
+  {path: 'meeting-celebration', component:MeetingCelebrationComponent},
+  {path: 'meetncele-request', component:MeetnceleRequestComponent}
 ];
 
 @NgModule({

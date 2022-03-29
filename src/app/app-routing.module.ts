@@ -37,6 +37,7 @@ const routes: Routes = [
   {path: 'phongbinhthuong',component:PhongbinhthuongComponent},
   {path: 'phongcaocap',component:PhongcaocapComponent},
   {path: 'career',component:CareerComponent},
+  {path: 'rooms', component: RoomsComponent},
   {path: 'meeting', component:MeetingComponent},
   {path: 'wedding', component:WeddingComponent},
   {path: 'meeting-celebration', component:MeetingCelebrationComponent},

@@ -18,6 +18,12 @@ import { RoomDetailComponent } from './components/room-detail/room-detail.compon
 import { ServiceComponent } from './components/service/service.component';
 import { SpaComponent } from './components/spa/spa.component';
 import { SportComponent } from './components/sport/sport.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { IntroductionComponent } from './components/introduction/introduction.component';
+import { NewsComponent } from './components/news/news.component';
+import { PolicyComponent } from './components/policy/policy.component';
+
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -41,7 +47,11 @@ const routes: Routes = [
   {path: 'meeting', component:MeetingComponent},
   {path: 'wedding', component:WeddingComponent},
   {path: 'meeting-celebration', component:MeetingCelebrationComponent},
-  {path: 'meetncele-request', component:MeetnceleRequestComponent}
+  {path: 'meetncele-request', component:MeetnceleRequestComponent},
+  {path: 'contactus', component:ContactusComponent},
+  {path: 'introduction', component: IntroductionComponent},
+  {path: 'news', component:NewsComponent},
+  {path: 'policy', component:PolicyComponent}
 ];
 
 @NgModule({

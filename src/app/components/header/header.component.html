@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+</head>
+<body>
+    <div class="header--desktop">
+         <!-- chứa logo -->
+         <div class="logo__container">
+            <a routerLink="/home"><img src="assets/Media/logo.webp" alt="Error"></a>
+        </div>
+        <!-- chứa navigation -->
+        <div class="menu">
+            <ul>
+                <li><a routerLink="/rooms">LOẠI PHÒNG</a>
+                    <ul>
+                        <li><a routerLink="/phongbinhthuong">Bình Thường</a> </li>
+                        <li><a routerLink="/phongcaocap">Cao Cấp</a> </li>
+                    </ul>
+                </li>
+                <li><a routerLink="/meeting-celebration">HỘI NGHỊ, SỰ KIỆN</a>
+                    <ul>
+                        <li><a routerLink="/meeting">Hội Họp</a> </li>
+                        <li><a routerLink="/wedding">Tiệc Cưới</a></li>
+                        <li><a routerLink="/anniversary">Lễ Kỉ Niệm</a> </li>
+                    </ul>
+                </li>
+                <li><a href="Service.html">DỊCH VỤ KHÁC</a>
+                    <ul>
+                        <li><a href="Restaurant.html">Nhà Hàng</a> </li>
+                        <li><a href="Sport.html">Thể Thao</a> </li>
+                        <li><a href="Pool.html">Hồ Bơi</a> </li>
+                        <li><a href="Spa.html">Spa</a> </li>
+                    </ul>
+                </li>
+                <li><a href="News.html">TIN TỨC</a>
+                </li>
+                <li><a href="Contactus.html">LIÊN HỆ</a></li>
+                <li class="button--type0">
+                    <span><a href="Booknow.html">ĐẶT NGAY</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header--mobile">
+        <div class="mobile__header">
+            <a routerLink="/home"><img src="assets/Media/logo2.webp" alt="Error" ></a>
+            <a href="javascript:void(0);" (click)="openMobileMenu()"><img src="assets/Media/nav_button.webp" alt="Error" ></a>
+        </div>
+        <div id="mobile__menu">
+            <div class="mobile__menu--1 main__navigation">
+                <ul>
+                    <li> <a href="Rooms.html">LOẠI PHÒNG</a> </li>
+                    <li><a href="MeetnCele.html">HỘI NGHỊ, SỰ KIỆN</a></li>
+                    <li><a href="Service.html">DỊCH VỤ KHÁC</a></li>
+                </ul>
+            </div>
+            <div class="mobile__menu--2">
+            <button class="button--type1" onclick="location.href='/Booknow.html'">ĐẶT NGAY</button></div>
+            <div class="mobile__menu--3 main__navigation">
+                <ul>
+                    <li> <a href="News.html">TIN TỨC</a> </li>
+                    <li><a href="Contactus.html">LIÊN HỆ</a></li>
+                    <li><a href="Introduction.html">GIỚI THIỆU</a></li>
+                    <li><a href="Career.html">TUYỂN DỤNG</a></li>
+                </ul>
+            </div>
+            <div class="mobile__menu--3 socialbutton__container--mobile">
+                <a href="#" class="fa fa-facebook"> </a>
+                <a href="#" class="fa fa-twitter"> </a>
+                <a href="#" class="fa fa-instagram"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="header__space"></div>  
+</body>
+</html>

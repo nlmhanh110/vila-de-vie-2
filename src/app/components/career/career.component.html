@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyển dụng</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__title--2">
+            <!-- chứa title và background -->
+            <img src="assets/Media/whiteheaderbg.webp" alt="Error">
+            <div class="title__container title__container--type2">
+                <!-- chứa title -->
+                <p class="title__item--2">Vila de Vie</p>
+                <p class="title__item--4">Tuyển dụng</p> <br>
+            </div>
+        </div>
+        <hr>
+        <!-- group 3 : nhân viên bếp -->
+        <div class="content__container">
+            <div class="content__title--type1">
+                <p class="title__item--3">Không có gì là quá lớn đối với chúng tôi: dịch vụ tuyệt vời biên giới với điều
+                    kỳ diệu và mọi mong muốn của khách đều là mệnh lệnh của chúng tôi.</p>
+            </div>
+        </div>
+        <div class="content__container content__container--type2">
+            <div class="content__left--2">
+                <img src="assets/Media/Career/hinh2.webp" alt="Error">
+            </div>
+            <div class="content__title--type1 content__right--2">
+                <h1>NHÂN VIÊN BẾP</h1>
+                <p>Là những người phụ trách nấu nướng, rửa chén, chuẩn bị đồ, làm theo yêu cầu, lên thực
+                    đơn, tùy thuộc vào yêu cầu công việc. Trong bếp sẽ có một số vị trí khác nhau: Phụ
+                    bếp, rửa chén, bếp chính. Với tư cách là một nhân viên bếp, bạn có thể chuẩn bị thực
+                    phẩm cho đầu bếp cao cấp hoặc bếp trưởng để nấu ăn cho khách.
+                </p>
+                <button class="button--type1"
+                    onclick="javascript:window.open('assets/Media/Career/Nhân viên bếp.pdf', '_blank');">CHI
+                    TIẾT</button>
+            </div>
+        </div>
+        <!-- GROUP 2 : nhân viên dọn phòng -->
+        <div class="content__container content__container--type1">
+            <div class="content__title--type1 content__left--1">
+                <h1>NHÂN VIÊN DỌN PHÒNG</h1>
+                <p>Nếu khách sạn được trang bị nhà bếp, khách sạn thường cung cấp dịch vụ phòng. Khách muốn ăn
+                    nhưng không muốn rời khỏi khách sạn hoặc đến nhà hàng của khách sạn (nếu có) thì có thể đặt
+                    ăn từ thực đơn trong phòng. Là nhân viên dịch vụ phòng, bạn có thể nhận các đơn đặt dịch vụ
+                    phòng (order), và sau đó mang lên phòng cho khách.</p>
+                <button class="button--type1"
+                    onclick="javascript:window.open('assets/Media/Career/Nhân viên dọn phòng.pdf', '_blank');">CHI
+                    TIẾT</button>
+            </div>
+            <div class="content__right--1">
+                <img src="assets/Media/Career/hinh3.webp" alt="Error">
+            </div>
+        </div>
+        <!-- group 3:  nhân viên lễ tân -->
+        <div class="content__container content__container--type2">
+            <div class="content__left--2">
+                <img src="assets/Media/Career/hinh4.webp" alt="Error">
+            </div>
+            <div class="content__title--type1 content__right--2">
+                <h1>NHÂN VIÊN LỄ TÂN</h1>
+                <p>Việc làm thủ tục nhận phòng cho khách thường bao gồm các công đoạn: nhận thông tin thẻ tín
+                    dụng, đưa thẻ đăng ký thông tin (registration card) cho khách vào phòng và trả lời bất kỳ
+                    câu hỏi nào của khách. Nhân viên lễ tân cũng thường xuyên nhận điện thoại và đặt phòng. Ở
+                    một số khách sạn nhỏ công việc này không đòi hỏi kinh nghiệm, nhưng ở các khách sạn lớn,
+                    bạn cần phải có bằng cấp (cao đẳng, đại học) hoặc kinh nghiệm mới có thể ứng tuyển vào
+                    vị trí công việc này.
+                </p>
+                <button class="button--type1"
+                    onclick="javascript:window.open('assets/Media/Career/Nhân viên lễ tân.pdf', '_blank');">CHI
+                    TIẾT</button>
+            </div>
+        </div>
+        <!-- form -->
+        <div class="content__container--form">
+            <form [formGroup] ="infoCandidate" class="container_form" id="form__career">
+                <p class="form__label">ĐĂNG KÝ TUYỂN DỤNG</p>
+                <div class="form__row">
+                    <div class="form__item ">
+                        <label class="form__label" for="LastName">Họ*:</label>  
+                        <input class="form__input" type="text" name="LastName" id="LastName" formControlName ="Lastname" required>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label" for="FirstName">Tên*:</label>  
+                        <input class="form__input" type="text" name="FirstName" id="FirstName" formControlName ="Firstname" required>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__item">
+                        <label class="form__label" for="Email">Email*:</label>  
+                        <input class="form__input" type="text" name="Email" id="Email" formControlName ="Email" required>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label" for="Phone">Số điện thoại*:</label>  
+                        <input class="form__input" type="text" name="Phone" id="Phone" formControlName ="Phone" required>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="Position">Vị trí*:</label>  
+                    <select class="form__input" name="Position" id="Position" required>
+                        <option value="letan">Nhân viên lễ tân</option>
+                        <option value="bep">Nhân viên bếp</option>
+                        <option value="donphong">Nhân viên dọn phòng</option>
+                    </select>
+                </div>
+                <div class="form__row">
+                    <div class="form__item">
+                        <label class="form__label" for="CV">Resum/CV*:</label>  
+                        <input class="form__button" type="file" name="CV" id="CV" value="Chọn tệp" required>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__label" for="Letter">Cover Letter*:</label>  
+                        <input class="form__button" type="file" name="CL" id="CL" value="Chọn tệp" required>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="LinkedIn">LinkedIn Profile:</label>  
+                    <input class=" form__input--Link form__input" type="text" name="LinkedIn" id="LinkedIn"
+                    formControlName ="LinkedIn"   placeholder="---">
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="Job">Làm thế nào bạn biết đến công việc này*:</label>  
+                    <select class="form__input" name="method" id="method" required>
+                        <option selected value="">---</option>
+                        <option value="direct">Trực tiếp qua website Vila de Vie</option>
+                        <option value="socialmedia">Thông qua mạng xã hội</option>
+                    </select>
+                </div>
+                <div class="form__item">
+                    <label class="form__label " for="Data">Bạn có đồng ý để Vila de Vie sử dụng dữ liệu cá nhân từ đơn
+                        đăng ký của bạn để cải thiện trải nghiệm tuyển dụng của chúng tôi không? Chúng tôi có thể cộng
+                        tác và chia sẻ dữ liệu của bạn với các nhà cung cấp bên thứ ba cho mục đích tuyển dụng và bạn có
+                        thể yêu cầu xóa dữ liệu của mình bất kỳ lúc nào.*</label>  
+                    <select class="form__input" name="Data" id="data" required>
+                        <option selected value="">---</option>
+                        <option value="Yes">Có</option>
+                        <option value="No">Không</option>
+                    </select>
+                </div>
+                <div class="form__item--checkbox">
+                    <input type="checkbox" name="agree" required>
+                    <label class="form__label" for="agree">Tôi đồng ý với các chính sách bảo mật
+                        của Vila de Vie</label>
+                </div>
+                <div class="form__button ">
+                    <input class="button--type1" type="submit" value="GỬI ĐƠN ĐĂNG KÍ">
+                </div>
+                <div id="result"></div>
+            </form>
+        </div>
+        
+    </div>
+</body>
+
+</html>

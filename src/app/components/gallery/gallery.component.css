@@ -1,0 +1,40 @@
+ 
+    * {
+        box-sizing: border-box;
+      }
+      .header {
+        text-align: center;
+        padding: 32px;
+      }
+      
+      .row-img {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      .col-img {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+      }
+      
+      .col-img img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+      }
+      
+      @media screen and (max-width: 800px) {
+        .col-img {
+          flex: 50%;
+          max-width: 50%;
+        }
+      }
+      
+      @media screen and (max-width: 600px) {
+        .col-img {
+          flex: 100%;
+          max-width: 100%;
+        }
+      }
+      

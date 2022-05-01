@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt phòng</title>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__title--2">
+            <!-- chứa title và background -->
+            <img src="assets/Media/whiteheaderbg.webp" alt="Error">
+            <div class="title__container title__container--type2">
+                <p class="title__item--2">Vila de Vie</p>
+                <p class="title__item--4">Đặt phòng</p>
+            </div>
+        </div>
+        <div class="form--container">
+            <form class="form--bookroom" #bookNowForm="ngForm">
+                <div class="form__item">
+                    <label class="form__label" for="checkIn">Ngày đến*:</label>
+                    <input class="form__input" type="date" name="checkIn" id="checkIn" required [min]="minCheckinDate" [(ngModel)]="booknow_form['checkIn']" #checkIn="ngModel" (change)="updateAcceptableDate()" [class.is-invalid]="checkIn.invalid && checkIn.touched">
+                    <small class="text-validation" [class.d-none]="checkIn.valid || checkIn.untouched">Bạn chưa
+                        chọn ngày đến</small>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="checkOut">Ngày đi*:</label>
+                    <input class="form__input" type="date" name="checkOut" id="checkOut" required [min]="minCheckoutDate" [(ngModel)]="booknow_form['checkOut']" #checkOut="ngModel" [class.is-invalid]="(checkOut.invalid && checkOut.touched) || (errFlag && checkOut.touched && checkIn.touched)" (change)="updateAcceptableDate2()">
+                    <small class="text-validation" [class.d-none]="checkOut.valid || checkOut.untouched">Bạn chưa
+                        chọn ngày đến</small>
+                    <small class="text-validation" [class.d-none]="!errFlag || checkOut.untouched">Vui lòng chọn ngày đi lớn hơn ngày đến</small>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="room">Số phòng*:</label>
+                    <input class="form__input" type="number" max="20" min="1" name="numOfRoom" id="numOfRoom" required [(ngModel)]="booknow_form['numOfRoom']" #numOfRoom="ngModel" [class.is-invalid]="numOfRoom.invalid && numOfRoom.touched">
+                    <small class="text-validation" [class.d-none]="numOfRoom.valid || numOfRoom.untouched">Bạn chưa
+                        chọn số phòng</small>
+                </div>
+                <!-- <div class="form__item">
+                    <label class="form__label" for="people">Số người*:</label>
+                    <input class="form__input" type="number" max="10" min="1" name="people" id="people" required>
+                </div> -->
+                <div class="form__item">
+                    <input class="button--type1" type="submit" value="GỬI YÊU CẦU" [disabled]="bookNowForm.form.invalid">
+                </div>
+            </form>
+
+        </div>
+        <div id="result"></div>
+    </div>
+
+</body>
+
+</html>

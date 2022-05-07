@@ -1,0 +1,20 @@
+.loadMore {
+    display: none;
+}
+@media screen and (max-width:768px) {
+    .pagination{
+        display: none;
+    }
+    .loadMore{
+        display: block;
+        margin:10px
+    }
+}
+
+ .content__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    width: 90%;
+    text-align: left;
+} 

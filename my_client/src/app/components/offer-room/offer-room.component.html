@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn phòng</title>
+    <script src="assets/JS/form__offerRoom.js" defer></script>
+    <style>
+        .main {
+            width: 90%;
+            margin: auto;
+            font-size: 18px;
+            font-family: 'Montserrat';
+        }
+
+        /* chỉnh thanh header-main */
+        .rooms__details--container {
+            text-align: center;
+            margin: 30px;
+
+        }
+
+        .rooms__container>button {
+            width: 52%;
+            text-align: left;
+
+        }
+
+        /* chỉnh main trong trang đưa ra offer phòng */
+        /* .content__footer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0;
+        } */
+
+        .roomfilter__container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form__item {
+            flex-basis: 10%;
+            margin: 10px;
+        }
+
+        .form__input {
+            width: 130px;
+        }
+
+        a {
+            color: var(--myColor1);
+        }
+        
+      
+        @media screen and (max-width:768px) {
+            .roomfilter__container {
+                flex-direction: column;
+            }
+
+            .form__item {
+                align-items: center;
+
+            }
+
+            .rooms__container>button {
+                width: 100%;
+                text-align: left;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="rooms__edit">
+            <a class="edit__container" onclick="editRoom()">
+                <span><i class="material-icons" style="font-size: 40px;">arrow_back</i></span>
+                <span>Chỉnh sửa</span></a>
+            <div class="orderdate__container">
+                <p>Khách sạn Vila de Vie</p>
+                <p class="text-container">
+                    <span class="order-info-date"> Ngày đến: &nbsp; <span
+                            id="arrive">{{booknow_data.checkIn.toLocaleDateString()}}</span></span>
+                    <span class="order-info-date"> Ngày đi: &nbsp; <span
+                            id="depart">{{booknow_data.checkOut.toLocaleDateString()}}</span></span>
+                </p>
+            </div>
+        </div>
+        <div class="rooms__details--container">
+            <div class="rooms__container">
+                <p>Vui lòng chọn phòng mà bạn muốn chỉnh</p>
+            </div>
+            <div class="button__container">
+                <!-- <div class="form__label" style="margin: 5px;" id="result"></div> -->
+                <button class="button--type1" id="reserve">TIẾN HÀNH ĐẶT</button>
+            </div>
+        </div>
+        <p style="text-align: center;" class="form__label">Bộ lọc tìm kiếm</p>
+        <div class="roomfilter__container">
+
+            <div class="form__item">
+                <!-- <label class="form__label" for="">Số người: </label> -->
+                <select class="form__input" name="quantity--filter" id="quantity--filter" onchange="roomFilter()">
+                    <option selected value="all">Số người</option>
+                    <option value="1">1 người</option>
+                    <option value="2">2 người</option>
+                    <option value="3">3 người</option>
+                    <option value="4">4 người</option>
+                </select>
+            </div>
+            <div class="form__item">
+                <!-- <label class="form__label" for="">Loại phòng: </label> -->
+                <select class="form__input" name="type--filter" id="type--filter" onchange="roomFilter()">
+                    <option selected value="all">Loại phòng</option>
+                    <option value="normal">Bình thường</option>
+                    <option value="premium">Cao cấp</option>
+                </select>
+            </div>
+            <!-- <div class="form__item">
+                <input type="button" class="button_detail button--type1" value="TÌM PHÒNG">
+            </div> -->
+        </div>
+        <!-- group phòng cao cấp 1 -->
+        <div #roomList></div>
+
+    </div>
+</body>
+
+</html>

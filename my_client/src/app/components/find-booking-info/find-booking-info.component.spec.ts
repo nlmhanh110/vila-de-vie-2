@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { FindBookingInfoComponent } from './find-booking-info.component';
 
-
-describe('FindBooingInfoComponent', () => {
+describe('FindBookingInfoComponent', () => {
   let component: FindBookingInfoComponent;
   let fixture: ComponentFixture<FindBookingInfoComponent>;
 

@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem thông tin phòng</title>
-    
+
 </head>
 
 <body>
-    
+
     <div class="main">
         <div class="main__title--2">
             <!-- chứa title và background -->
@@ -20,22 +20,27 @@
                 <p class="title__item--4">Xem thông tin đặt phòng</p>
             </div>
         </div>
-        <form class="form__viewinfo">
-                <div>
-                    <label class="form__label" for="code">Mã đặt phòng</label>  
-                </div>
-                <div>
-                    <input class="form__input" type="number" name="code" id="code" required>
-                </div>
-            
+        <form #findBookingInfoForm="ngForm" (ngSubmit)="submitData(findBookingInfo)" class="form__viewinfo">
+            <div>
+                <label class="form__label" for="code">Mã đặt phòng</label>
+            </div>
+            <div>
+                <input class="form__input" [(ngModel)]="findBookingInfo['code']" #code="ngModel" type="number"
+                    name="code" id="code" required>
+            </div>
+            <div *ngIf="code.errors && code.invalid && code.touched">
+                <small class="text-validation">Bạn chưa nhập mã code
+                    khách.</small>
+            </div>
             <div class="form__button" id="btn">
-                <input class="button--type1" type="submit" value="GỬI YÊU CẦU">
+                <input class="button--type1" type="submit" value="GỬI YÊU CẦU"
+                    [disabled]="findBookingInfoForm.form.invalid">
             </div>
             <div id="result"></div>
-        </form>    
+        </form>
     </div>
 
-    
+
 </body>
 
 </html>

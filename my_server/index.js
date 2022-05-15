@@ -18,6 +18,15 @@ app.use(bodyParser.json())
 const applicationFormRouter = require('./routes/application_form.router.js');
 app.use("/",applicationFormRouter)
 
+const meetnceleRequestRouter = require('./routes/meetnrequest.router.js');
+app.use("/",meetnceleRequestRouter)
+
+const contactusRouter = require('./routes/contactus.router.js');
+app.use("/",contactusRouter)
+
+const findBookingInfoRouter = require('./routes/find-booking-info.router.js');
+app.use("/",findBookingInfoRouter)
+
 //Connect DB
 const db = require("./config/db");
 db.connect();

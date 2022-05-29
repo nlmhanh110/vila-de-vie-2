@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem thông tin đặt phòng</title>
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__title--2">
+            <!-- chứa title và background -->
+            <img src="assets/Media/whiteheaderbg.webp" alt="Error">
+            <div class="title__container title__container--type2">
+                <p class="title__item--2">Vila de Vie</p>
+                <p class="title__item--4">Thông tin đặt phòng</p>
+            </div>
+        </div>
+        <div class="main__content">
+            <div class="main__content--container">
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN ĐẶT PHÒNG
+                    </div>
+                    <div class="infor--right">
+                        <div class="detail">
+                            <label class="form__label" for="code">Mã đặt phòng</label>
+                            <p class="form__output">{{selectedBookingInfo.get('code')}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="bookstatus">Tình trạng</label>
+                            <p *ngIf="selectedBookingInfo.get('bookingStatus') == 'paid'" class="form__output">Đã thanh toán</p>
+                            <p *ngIf="selectedBookingInfo.get('bookingStatus') == 'canceled'"class="form__output">Đã hủy</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="time">Thời gian đặt phòng</label>
+                            <p class="form__output">{{bookTime.toLocaleDateString()}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="checkin">Ngày đến</label>
+                            <p class="form__output">{{booknow_data.checkIn.toLocaleDateString()}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="checkout">Ngày đi</label>
+                            <p class="form__output">{{booknow_data.checkOut.toLocaleDateString()}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="quantity">Số phòng</label>
+                            <p class="form__output">{{booknow_data.numOfRoom}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="quantity">Số người tối đa</label>
+                            <p class="form__output">{{selectedBookingInfo.get('maxPeople')}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="total">Tổng cộng</label>
+                            <p class="form__output">{{totalAmount.toLocaleString()}}VND</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN NGƯỜI ĐẶT
+                    </div>
+                    <div class="infor--right">
+                        <div class="detail">
+                            <label class="form__label" for="Fullname">Họ và tên</label>
+                            <p class="form__output">{{selectedBookingInfo.get('lastname')}}
+                                {{selectedBookingInfo.get('firstname')}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="phonenumber">Số điện thoại</label>
+                            <p class="form__output">{{selectedBookingInfo.get('phone')}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="email">Email</label>
+                            <p class="form__output">{{selectedBookingInfo.get('email')}}</p>
+                        </div>
+                        <div class="detail">
+                            <label class="form__label" for="paymentmethod">Phương thức thanh toán</label>
+                            <p class="form__output">{{selectedBookingInfo.get('paymethod')}}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="content__container--viewinfor">
+                    <div class="infor--left">
+                        THÔNG TIN PHÒNG CỤ THỂ
+                    </div>
+                    <div class="infor--right rooms__container">
+                        <div class="room--item" >
+                            <div class="detail" *ngFor="let r of reservedRooms; index as i">
+                                <!-- <label class="form__label" for="room01">Phòng {{i+1}}</label> -->
+                                <p class="form__output">{{r.roomTitle}}</p>
+                                <p class="form__output">{{r.roomPrice.toLocaleString()}}VND</p>
+                                <p class="form__output">{{r.roomQty}} phòng</p>
+                            </div>
+                            <!-- <div class="detail">
+                                <label class="form__label" for="price1">Giá phòng</label>
+                                <p class="form__output">{{}}</p>
+                            </div> -->
+                        </div>
+
+                        <div class="detail">
+                            <label class="form__label" for="voucher">Mã khuyến mãi</label>
+                            <p class="form__output"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <input class="button--type1" type="button" id="feedback" data-target="#formFeedBack"
+                        data-toggle="modal" value="GỬI PHẢN HỒI">
+                    <input class="button--type1" id="print" type="button" onclick="window.print();"
+                        value="IN THÔNG TIN">
+                    <input class="button--type1" onclick="bookingCancel()" type="button" data-target="#popupCancel"
+                        data-toggle="modal" value="HỦY ĐẶT PHÒNG">
+                </div>
+
+                <!-- Group : modal cho Feedback -->
+                <div class="form-popup modal fade" role="dialog" id="formFeedBack">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                                <h3 style="text-align: center;">Gửi phản hồi</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="form-container">
+                                    <label for="fb">Hãy cho chúng tôi biết cảm nhận của bạn tại Vila de Vie</label>
+                                    <textarea class="form__input" name="fb" id="fb" cols="30" rows="7"
+                                        required></textarea>
+                                    <button type="submit" class="button--type2">GỬI</button>
+                                </form>
+                                <div class="result--Fb" id="result"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group : modal cho Cancel -->
+                <div class="modal fade" role="dialog" id="popupCancel">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" data-dismiss="modal" class="close">&times;</button>
+                                <h3 style="text-align: center;">Xác nhận hủy đặt phòng</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p style="text-align: center;" id="checkCancel"></p>
+                                <div class="button--container">
+                                    <button class="button--type1" type="button" onclick="cancelYes()">Có</button>
+                                    <button type="button" class="button--type2" onclick="cancelNo()">Không</button>
+                                </div>
+                                <div class="result--cancel" id="result"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

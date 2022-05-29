@@ -1,0 +1,31 @@
+.content__container--type1 {
+            width: 85%;
+        }
+        .content__left--1 {
+            flex-basis: 35%;
+        }
+
+        .content__right--1 {
+            flex-basis: 60%;
+        }
+
+        .content__right--1 img {
+            width: 80%;
+        }
+
+        /* group3 */
+        .content__container--type2 {
+            width: 90%;
+        }
+
+        .content__left--2 {
+            flex-basis: 60%;
+        }
+
+        .content__left--2 img {
+            width: 80%;
+        }
+
+        .content__right--2 {
+            flex-basis: 35%;
+        }

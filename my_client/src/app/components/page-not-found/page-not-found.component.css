@@ -1,0 +1,15 @@
+.main-content{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+#title404{
+    font-size: 20vh; 
+    color: var(--myColor1); 
+    margin: 20px;
+}
+@media screen and (max-width:768px) {
+    #title404{
+        font-size: 8vh; 
+    }
+}

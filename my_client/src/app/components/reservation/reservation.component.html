@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiến Hành Đặt Phòng</title>
+    <script src="../JS/form__reservation.js" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__content">
+            <!-- Edit rooms reservation -->
+            <div class="rooms__edit">
+                <a class="edit__container" onclick="editRoom()">
+                    <span><i class="material-icons" style="font-size: 40px;">arrow_back</i></span>
+                    <span>Chỉnh sửa</span></a>
+                <div class="orderdate__container">
+                    <p>Khách sạn Vila de Vie</p>
+                    <p class="text-container">
+                        <span class="order-info-date"> Ngày đến: &nbsp; <span
+                                id="arrive">{{booknow_data.checkIn.toLocaleDateString()}}</span></span>
+                        <span class="order-info-date"> Ngày đi: &nbsp; <span
+                                id="depart">{{booknow_data.checkOut.toLocaleDateString()}}</span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="content__container">
+                <!-- Group 1 : Customer's info -->
+                <div class="content__container--form">
+                    <h3 class="title__styles">Thông tin người đặt phòng</h3>
+                    <a class="title_styles file__item openForm" href="#myForm" data-toggle="modal">Đã
+                        từng đến đây?</a>
+                    <form id="form--reservation" #reservationForm="ngForm"
+                        (ngSubmit)="submitData(reservationForm.value,reservationForm)">
+                        <div class="form__row">
+                            <div class="form__item">
+                                <label class="form__label" for="lastname">Họ*:</label>
+                                <input class="form__input" type="text" name="lastname" id="lastname"
+                                    [(ngModel)]="reservation['lastname']" required #lastname="ngModel"
+                                    [class.is-invalid]="lastname.invalid && lastname.touched">
+                                <small class="text-validation" [class.d-none]="lastname.valid || lastname.untouched">Bạn
+                                    chưa
+                                    nhập họ</small>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="firstname">Tên*:</label>
+                                <input class="form__input" type="text" name="firstname" id="firstname"
+                                    [(ngModel)]="reservation['firstname']" required #firstname="ngModel"
+                                    [class.is-invalid]="firstname.invalid && firstname.touched">
+                                <small class="text-validation"
+                                    [class.d-none]="firstname.valid || firstname.untouched">Bạn
+                                    chưa
+                                    nhập tên</small>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__item">
+                                <label class="form__label" for="phone">SĐT*:</label>
+                                <input class="form__input" type="number" name="phone" id="phone"
+                                    [(ngModel)]="reservation['phone']" required #phone="ngModel"
+                                    [class.is-invalid]="phone.invalid && phone.touched" [pattern]="phonePattern">
+                                <div *ngIf="phone.errors && phone.invalid && phone.touched">
+                                    <small class="text-validation" *ngIf="phone.errors['required']">Bạn chưa nhập số
+                                        điện
+                                        thoại.</small>
+                                    <small class="text-validation" *ngIf="phone.errors['pattern']">Số điện thoại không
+                                        hợp
+                                        lệ.</small>
+                                </div>
+                            </div>
+                            <div class="form__item">
+                                <label class="form__label" for="email">Email*:</label>
+                                <input class="form__input" type="email" [email]="true" name="email" id="email"
+                                    [(ngModel)]="reservation['email']" required #email="ngModel"
+                                    [class.is-invalid]="email.invalid && email.touched">
+                                <div *ngIf="email.errors && email.invalid && email.touched">
+                                    <small class="text-validation" *ngIf="email.errors['required']">Bạn chưa nhập
+                                        email</small>
+                                    <small class="text-validation" *ngIf="email.errors['email']">Bạn nhập email
+                                        không hợp
+                                        lệ</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__checkrow form__label">
+                            <input type="checkbox" name="guest" id="guest"
+                             [(ngModel)]="showHideGuestBox">
+                            Chọn nếu bạn đặt phòng thay cho người khác.
+                        </div>
+                        <div class="form__item" *ngIf="showHideGuestBox">
+                            <label class="form__label" for="guestname">Họ và tên người đó:</label>
+                            <input type="text" class="form__input" name="guestname" id="guestname"
+                                [(ngModel)]="guestName" required #guestname="ngModel"
+                                [class.is-invalid]="guestname.invalid && guestname.touched">
+                            <small class="text-validation" [class.d-none]="guestname.valid || guestname.untouched">Bạn
+                                chưa
+                                nhập tên</small>
+                        </div>
+                        <div class="form__item">
+                            <label class="form__label" for="comment">Lời nhắn:</label>
+                            <textarea class="form__input" name="comment" id="comment" cols="30" rows="7"
+                                placeholder="..." [(ngModel)]="reservation['comment']" #comment="ngModel"></textarea>
+                        </div>
+                        <div class="form__item">
+                            <label class="form__label" for="paymethod">Chọn phương thức thanh toán*:</label>
+                            <div class="radio__item">
+                                <div class="form__row--radio">
+                                    <input type="radio" id="paymethod" name="paymethod" value="ATM" required
+                                        [(ngModel)]="reservation['paymentMethod']" #paymentMethod="ngModel">
+                                    <label class="form__label" for="ATM"> Thanh toán bằng ATM</label>
+                                </div>
+                                <div class="form__row--radio">
+                                    <input type="radio" id="paymethod" name="paymethod" value="IB" required
+                                    [(ngModel)]="reservation['paymentMethod']" #paymentMethod="ngModel">
+                                    <label class="form__label" for="IB"> Thanh toán bằng Internet Banking</label>
+                                </div>
+                                <div class="form__row--radio">
+                                    <input type="radio" id="paymethod" name="paymethod" value="Visa" required
+                                    [(ngModel)]="reservation['paymentMethod']" #paymentMethod="ngModel">
+                                    <label class="form__label" for="Visa"> Thanh toán bằng Thẻ Quốc Tế</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__checkrow form__label">
+                            <input type="checkbox" name="agree" id="agree" required #agree="ngModel" ngModel
+                                [class.is-invalid]="agree.value==false && agree.touched">
+                            Tôi đã đọc và đồng ý với các <a class="file__item" href="Policy.html" target="_blank">điều
+                                khoản</a> và <a class="file__item" href="Policy.html" target="_blank">chính sách hủy
+                                phòng</a>
+                        </div>
+                        <div class="form__button">
+                            <input class="button--type1" type="submit" value="ĐẶT VÀ THANH TOÁN"
+                                [disabled]="reservationForm.form.invalid || agree.value==false">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Group 2 : Room reservation's info -->
+                <div class="content__container--information">
+                    <h3 class="title__styles">Thông tin đặt phòng</h3>
+                    <p>Thời gian giữ phòng: <span id="countdown">10:00</span> </p>
+                    <form action="">
+                        <hr>
+                        <div class="form__row">
+                            <p class="form__item">Thời gian:</p>
+                            <p id="time">{{booknow_data.checkIn.toLocaleDateString()}} - {{booknow_data.checkOut.toLocaleDateString()}}</p>
+                        </div>
+                        <div class="form__row">
+                            <p class="form__item">Số người tối đa</p>
+                            <p id="peoplenumber">{{maxPeople}}</p>
+                        </div>
+                        <div class="form__row">
+                            <p class="form__item">Số phòng:</p>
+                            <p id="roomsnumber">{{booknow_data.numOfRoom}}</p>
+                        </div>
+                        <hr>
+                        <p class="title__styles">Thông tin phòng</p>
+                        <div class="rooms__container">
+                            <div class="form__row" *ngFor="let r of offerRoom_data, index as i">
+                                <p class="form__item">{{r.roomTitle}}</p>
+                                <p id="money">{{r.roomPrice.toLocaleString()}}VND</p>
+                                <p>{{r.roomQty}} phòng</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form__row">
+                            <div class="form__item">
+                                <label for="discount">Mã khuyến mãi:</label>
+                                <input class="form__input" type="text" name="promotion" id="promotion" [(ngModel)]="promotion">
+                            </div>
+                            <div class="form__button">
+                                <input class="button--type1" type="button" value="ÁP DỤNG" onclick="applyDiscount()">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form__row">
+                            <p>Tổng cộng</p>
+                            <p id="total"><b>{{totalAmount.toLocaleString()}} VND</b></p>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+            <!-- Group : modal cho Đã từng đến đây -->
+            <div class="modal fade" role="dialog" id="myForm">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" data-dismiss="modal" class="close">&times;</button>
+                            <h3 style="text-align: center;">Xác nhận</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" class="form-container">
+                                <label for="phonenumber">Nhập Số Điện Thoại</label>
+                                <input class="form__input" type="tel" id="phone" name="phone" placeholder="0123456789"
+                                    pattern="[0-9]{10}" required>
+                                <button type="button" class="button--type2 btn" onclick="getCustomerData()">GỬI</button>
+                            </form>
+                            <div id="result"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

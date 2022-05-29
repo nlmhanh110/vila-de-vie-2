@@ -1,0 +1,7 @@
+.content__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    width: 90%;
+    text-align: left;
+}

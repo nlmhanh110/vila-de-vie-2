@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yêu cầu hội nghị</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main__title--2">
+            <!-- chứa title và background -->
+            <img src="assets/Media/whiteheaderbg.webp" alt="Error">
+            <div class="title__container title__container--type2">
+                <p class="title__item--2 title1">Hội nghị và Sự kiện</p>
+                <p class="title__item--4 title2">Yêu cầu đề xuất</p>
+            </div>
+        </div>
+        <form #meetnceleRequest="ngForm" (ngSubmit)="submitData(meetnceleRequest)" class="container_form form--request">
+            <div class="form__row">
+                <div class="form__item ">
+                    <label class="form__label" for="lastName">Họ*:</label>
+                    <input class="form__input" type="text" name="lastName" id="lastName"
+                        [(ngModel)]="meetncele_request['lastName']" required #lastName="ngModel"
+                        [class.is-invalid]="lastName.invalid && lastName.touched">
+                    <small class="text-validation" [class.d-none]="lastName.valid || lastName.untouched">Bạn chưa
+                        nhập họ</small>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="firstName">Tên*:</label>
+                    <input class="form__input" type="text" name="firstName" id="firstName"
+                        [(ngModel)]="meetncele_request['firstName']" required #firstName="ngModel"
+                        [class.is-invalid]="firstName.invalid && firstName.touched">
+                    <small class="text-validation" [class.d-none]="firstName.valid || firstName.untouched">Bạn chưa
+                        nhập tên</small>
+                </div>
+            </div>
+            <div class=" form__row">
+                <div class="form__item">
+                    <label class="form__label" for="Email">Email*:</label>
+                    <input class="form__input" type="email" [email]="true" name="email" id="email"
+                        [(ngModel)]="meetncele_request['email']" required #email="ngModel"
+                        [class.is-invalid]="email.invalid && email.touched">
+                    <div *ngIf="email.errors && email.invalid && email.touched">
+                        <small class="text-validation" *ngIf="email.errors['required']">Bạn chưa nhập email</small>
+                        <small class="text-validation" *ngIf="email.errors['email']">Bạn nhập email không hợp
+                            lệ</small>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="phoneNumber">Số điện thoại*:</label>
+                    <input class="form__input" type="number" name="phoneNumber" id="phoneNumber"
+                        [(ngModel)]="meetncele_request['phoneNumber']" required #phoneNumber="ngModel"
+                        [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched" [pattern]="phonePattern">
+                    <div *ngIf="phoneNumber.errors && phoneNumber.invalid && phoneNumber.touched">
+                        <small class="text-validation" *ngIf="phoneNumber.errors['required']">Bạn chưa nhập số điện
+                            thoại.</small>
+                        <small class="text-validation" *ngIf="phoneNumber.errors['pattern']">Số điện thoại không hợp
+                            lệ.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form__item">
+                <label class="form__label" for="address">Địa chỉ*:</label>
+                <input class="form__input" type="text" name="address" id="address" required
+                    [(ngModel)]="meetncele_request['address']" #address="ngModel"
+                    [class.is-invalid]="address.invalid && address.touched">
+                <div *ngIf="address.errors && address.invalid && address.touched">
+                    <small class="text-validation" [class.d-none]="address.valid || address.untouched">Bạn chưa nhập Địa
+                        chỉ.</small>
+                </div>
+            </div>
+
+            <div class="form__row--2">
+                <div class="form__item">
+                    <label class="form__label" for="meetingType">Loại sự kiện*:</label>
+                    <select class="form__input" name="meetingType" id="meetingType"
+                        [(ngModel)]="meetncele_request['meetingType']" required #meetingType="ngModel"
+                        [class.is-invalid]="meetingTypeFlag && meetingType.touched"
+                        (blur)="validatemeetingType(meetingType.value)"
+                        (change)="validatemeetingType(meetingType.value)">
+                        <option value="wedding">Tiệc cưới</option>
+                        <option value="meeting">Hội nghị</option>
+                        <option value="anniversary">Lễ kỉ niệm</option>
+                    </select>
+                    <small class="text-validation" [class.d-none]="!meetingTypeFlag || meetingType.untouched">Vui lòng
+                        chọn loại sự kiện bạn muốn.</small>
+                    <div *ngIf="meetingType.errors && meetingType.invalid && meetingType.touched">
+                        <small class="text-validation" *ngIf="meetingType.errors['required']">Vui lòng chọn loại sự kiện
+                            bạn muốn. </small>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="quantity">Số lượng khách*:</label>
+                    <input class="form__input" id="quantity" name="quantity" type="number" min="0" required
+                        #quantity="ngModel" [(ngModel)]="meetncele_request['quantity']">
+                    <div *ngIf="quantity.errors && quantity.invalid && quantity.touched">
+                        <small class="text-validation">Bạn chưa nhập số lượng
+                            khách.</small>
+                    </div>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="Request">Yêu cầu phòng*:</label>
+                    <div>
+                        <div class="radio--container">
+                            <input type="radio" name="Request" id="RequestforRoom" value="yes" required
+                                [(ngModel)]="meetncele_request['requestRoom']" #requestRoom="ngModel">
+                            <span class="form__label">Có</span>
+                        </div>
+                        <div class="radio--container">
+                            <input type="radio" name="Request" id="Request" value="no" required #requestRoom="ngModel"
+                                [(ngModel)]="meetncele_request['requestRoom']">
+                            <span class="form__label">Không</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form__row">
+                <div class="form__item">
+                    <label class="form__label" for="StartDate">Ngày bắt
+                        đầu*:</label>
+                    <input class="form__input" type="date" name="StartDate" id="StartDate" #StartDate="ngModel"
+                        [(ngModel)]="meetncele_request['StartDate']" required [min]="minStartDate"
+                        (change)="updateAcceptableDate()" [class.is-invalid]="StartDate.invalid && StartDate.touched">
+                    <small class="text-validation" [class.d-none]="StartDate.valid || StartDate.untouched">Bạn chưa
+                        chọn ngày bắt đầu</small>
+                </div>
+                <div class="form__item">
+                    <label class="form__label" for="EndDate">Ngày kết thúc*:</label>
+                    <input class="form__input" type="date" name="EndDate" id="EndDate" required #EndDate="ngModel"
+                        [(ngModel)]="meetncele_request['EndDate']" [min]="minEndDate"
+                        [class.is-invalid]="(EndDate.invalid && EndDate.touched) || (errFlag && EndDate.touched && StartDate.touched)"
+                        (change)="updateAcceptableDate2()">
+                    <small class="text-validation" [class.d-none]="EndDate.valid || EndDate.untouched">Bạn chưa
+                        chọn ngày kết thúc</small>
+                    <small class="text-validation" [class.d-none]="!errFlag || EndDate.untouched">Vui lòng chọn ngày kết
+                        thúc lớn hơn ngày bắt đầu</small>
+                </div>
+            </div>
+            <div class="form__item">
+                <label class="form__label " for="note">Lời nhắn:</label>
+                <textarea class="form__input form__input--note" name="Note" id="Note" cols="100" rows="10"
+                    placeholder="Write your note if you would like to request us, have a goood day!" #note="ngModel"
+                    [(ngModel)]="meetncele_request['note']"></textarea>
+            </div>
+            <div class="form__item--checkbox">
+                <input type="checkbox" #agree="ngModel" name="agree" id="agree" required ngModel
+                    [class.is-invalid]="agree.value==false && agree.touched">
+                <label class="form__label form__label--checkbox" for="agree">Tôi đồng ý với các <a
+                        style="color: rgba(5, 18, 202, 0.418);" href="Policy.html" target="_blank">chính sách bảo
+                        mật</a> của
+                    Vila de Vie</label>
+                <div *ngIf="agree.errors && agree.invalid && agree.touched">
+                    <small class="text-validation" *ngIf="agree.errors['required']">Vui lòng tick vào yêu cầu đồng
+                        ý.</small>
+
+                </div>
+            </div>
+            <div class="form__button ">
+                <input class="button--type1" id="btn" type="submit" value="GỬI YÊU CẦU"
+                    [disabled]="meetnceleRequest.form.invalid || agree.value==false">
+            </div>
+
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+
+</html>
